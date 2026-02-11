@@ -1,0 +1,41 @@
+/* Global CSS Reset and Base Styles */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Ensures padding/border are included in element's total width/height */
+}
+* {
+  margin: 0; /* Removes default margins from all elements */
+  padding: 0; /* Removes default padding from all elements */
+}
+html, body {
+  height: 100%; /* Helps with full-height layouts */
+}
+img, picture, video, canvas, svg {
+  display: block; /* Changes these to block elements for easier layout control */
+  max-width: 100%; /* Makes images/media responsive by default */
+}
+input, button, textarea, select {
+  font: inherit; /* Ensures form elements inherit font properties */
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word; /* Prevents long words from breaking layout */
+}
+
+/* Additional global styles can be added here */
+
+:root {
+  --font-main: "Epilogue", sans-serif;
+  --font-heading: "Poly", sans-serif;
+  --box-color: #17332D;
+  --orange: #EF6B11;
+  --green: #7ACC46;
+  --blue: #39BDE5;
+}
+
+.innerContainer {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 40px;
+}

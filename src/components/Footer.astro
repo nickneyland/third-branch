@@ -1,0 +1,19 @@
+---
+import global from '../styles/global.module.css'
+import styles from '../styles/footer.module.css'
+---
+
+<footer class={styles.footer}>
+    <div class={`${global.innerContainer} ${styles.footerContainer}`}>
+        <div class="footer-left">
+            <p>&copy; {new Date().getFullYear()} Third Branch Consulting</p>
+        </div>
+        <div class="footer-right">
+            <ul>    
+                <li><a href="mailto:info@thirdbranchconsulting.com">Contact Us</a></li>
+                <li>|</li>
+                <li><a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>

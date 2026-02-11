@@ -1,0 +1,30 @@
+---
+import '../styles/global.module.css'
+import '@fontsource/epilogue'
+import '@fontsource/poly'
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Third Branch Consulting</title>
+	</head>
+	<body>
+		<Header />
+		<slot />
+		<Footer />
+		<script>
+			//  Smooth scroll
+			import "../js/smoothScroll";
+		</script>
+	</body>
+</html>
+
+

@@ -1,0 +1,17 @@
+.navMenu {
+    ul {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        list-style-type: none;
+        text-decoration: none;
+        li {
+            a {
+                font-family: var(--font-main);
+                color: #000;
+                font-size: 18px;
+                text-decoration: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets';
+import Navigation from "./Navigation.astro"
+import Logo from "../images/logo.svg"
+import styles from '../styles/header.module.css'
+---
+
+<header class={styles.header}>
+    <div class={styles.innerHeader}>
+        <div class={styles.headerLeft}>
+            <a href="/"><Image src={Logo} alt="Third Branch Consulting Logo" class="logo" /></a>
+        </div>
+        <div class={styles.headerRight}>
+            <Navigation />
+        </div>
+    </div>
+</header>   
