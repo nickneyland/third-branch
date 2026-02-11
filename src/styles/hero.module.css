@@ -7,6 +7,10 @@
     }
 }
 
+a {
+    color: #fff;
+}
+
 img.hero {
     width: 100%;
     height: 100%;
@@ -46,6 +50,7 @@ img.hero {
             padding-bottom: 4px;
             position: relative;
             display: inline-block;
+            transition: all 0.3s ease-out;
             &::after {
                 content: '';
                 position: absolute;
@@ -61,17 +66,26 @@ img.hero {
                     background-color: var(--orange);
                     animation: borderSlideIn 0.8s ease-out 0.5s forwards;
                 }
+                &:hover {
+                    color: var(--orange);
+                }
             }
             &.lineGreen {
                 &::after {
                     background-color: var(--green);
                     animation: borderSlideIn 0.8s ease-out 1s forwards;
                 }
+                &:hover {
+                    color: var(--green);
+                }
             }
             &.lineBlue {
                 &::after {
                     background-color: var(--blue);
                     animation: borderSlideIn 0.8s ease-out 1.5s forwards;
+                }
+                &:hover {
+                    color: var(--blue);
                 }
             }
         }

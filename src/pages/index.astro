@@ -17,7 +17,7 @@ import globalStyles from '../styles/global.module.css'
 		<div class={heroStyles.heroHolder}>
 			<Image src={Hero} alt="Hero Image" class={heroStyles.hero} />
 			<div class={heroStyles.heroText}>
-				<h1>Third Branch offers <span class={heroStyles.lineOrange}>strategy</span>, <span class={heroStyles.lineGreen}>creative consulting</span> and <span class={heroStyles.lineBlue}>development</span> services across all industries.</h1>
+				<h1>Third Branch offers <a href="#strategy"><span class={heroStyles.lineOrange}>strategy</span></a>, <a href="#creative-consulting"><span class={heroStyles.lineGreen}>creative consulting</span></a> and <a href="#development"><span class={heroStyles.lineBlue}>development</span></a> services across all industries.</h1>
 			</div>
 		</div>
 		<div class={homepageStyles.pageBanner}>
@@ -29,7 +29,7 @@ import globalStyles from '../styles/global.module.css'
 		<section id="our-services" class={homepageStyles.ourServices}>
 			<div class={`${homepageStyles.innerContainer}`}>
 				<h2>Three Branches of Support</h2>
-				<div class={homepageStyles.row}>
+				<div class={homepageStyles.row} id="strategy">
 					<div class={`${homepageStyles.col} ${homepageStyles.imageCol}`}>
 						<div class={homepageStyles.imageHolder}>
 							<Image src={ServicesOne} alt="Design Services" />
@@ -44,7 +44,7 @@ import globalStyles from '../styles/global.module.css'
 						<p>Aspernatur aut odit aut fugit, sed quia consequuntur.</p>
 					</div>
 				</div>
-				<div class={homepageStyles.row}>
+				<div class={homepageStyles.row} id="creative-consulting">
 					<div class={`${homepageStyles.col} ${homepageStyles.textCol} ${homepageStyles.textColTwo}`} style="margin-right: 80px;">
 						<h4>Design for all of your needs. Brand building for a wider reach.</h4>
 						<p>Sed ut perspiciatis unde omnis iste natus arripit sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi </p>
@@ -59,7 +59,7 @@ import globalStyles from '../styles/global.module.css'
 						</div>
 					</div>
 				</div>
-				<div class={homepageStyles.row}>
+				<div class={homepageStyles.row} id="development">
 					<div class={`${homepageStyles.col} ${homepageStyles.imageCol}`}>
 						<div class={homepageStyles.imageHolder}>
 							<Image src={ServicesThree} alt="Design Services" />
