@@ -18,12 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 successMessage.innerHTML = `
                     <div style="text-align: center; padding: 40px 20px; color: #fff;">
                         <h4 style="color: #fff; font-size: 28px; margin-bottom: 20px;">Thank you!</h4>
-                        <p style="font-size: 18px; margin-bottom: 20px;">Your message has been sent successfully. We'll get back to you soon!</p>
+                        <p style="font-size: 18px; margin-bottom: 20px;">Your message has been sent successfully. We'll be in touch!</p>
                         <button onclick="location.reload()" style="
                             font-family: var(--font-main);
                             font-weight: 700;
                             font-size: 16px;
-                            width: 200px;
+                            width: 300px;
                             height: 40px;
                             background: var(--orange);
                             border-radius: 100px;

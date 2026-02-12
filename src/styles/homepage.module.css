@@ -128,6 +128,9 @@ main {
             color: #fff;
             display:flex;
             padding: 100px 0;
+            @media (max-width: 600px) {
+                padding: 100px 20px;
+             }
             h4 {
                 color: #fff;
                 font-weight: 600;
@@ -163,6 +166,9 @@ main {
                     background: #f4ffaf;
                     opacity: 0.8;
                     cursor: pointer;
+                }
+                @media (max-width: 600px) {
+                    width: 250px;
                 }
             }
         }
@@ -248,7 +254,7 @@ main {
                 background-size: cover;
              }
              @media (max-width: 600px) {
-                margin: 0 20px;
+                margin: 0;
              }
         }
     }
