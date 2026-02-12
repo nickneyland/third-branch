@@ -166,15 +166,81 @@ main {
                 }
             }
         }
+        .contactForm {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px 20px;
+            .formRow {
+                display: flex;
+                gap: 20px;
+                @media (max-width: 600px) {
+                    flex-direction: column;
+                    gap: 0;
+                }
+            }
+            
+            .formGroup {
+                margin-bottom: 20px;
+                flex: 1;
+                
+                label {
+                    display: block;
+                    font-family: var(--font-main);
+                    font-weight: 600;
+                    color: #fff;
+                    margin-bottom: 8px;
+                    font-size: 16px;
+                }
+            }
+            
+            .formInput,
+            .formTextarea {
+                width: 100%;
+                padding: 12px 16px;
+                border: 2px solid rgba(255, 255, 255, 0.3);
+                border-radius: 8px;
+                background: rgba(255, 255, 255, 0.1);
+                color: #fff;
+                font-family: var(--font-main);
+                font-size: 16px;
+                transition: all 0.3s ease;
+                
+                &::placeholder {
+                    color: rgba(255, 255, 255, 0.6);
+                }
+                
+                &:focus {
+                    outline: none;
+                    border-color: var(--orange);
+                    background: rgba(255, 255, 255, 0.2);
+                }
+                
+                &:required:invalid {
+                    border-color: rgba(255, 100, 100, 0.6);
+                }
+            }
+            
+            .formTextarea {
+                resize: vertical;
+                min-height: 120px;
+            }
+            
+            button[type="submit"] {
+                margin: 0 auto;
+                margin-top: 10px;
+            }
+        }
         .innerContact {
             background: url(../images/contact.svg) no-repeat;
-            background-size: 100%;
+            background-size: cover;
             width: 1000px;
-            height: 450px;
+            height: auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            border-radius: 25px;
+            padding: 100px 20px;
              @media (max-width: 1040px) {
                 width: 100%;
                 height: auto;

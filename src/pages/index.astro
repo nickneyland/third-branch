@@ -86,7 +86,56 @@ import globalStyles from '../styles/global.module.css'
 					<div class={`${homepageStyles.innerContact} ${globalStyles.innerContainer}`}>
 						<h4>Interested in starting a project?</h4>
 						<p>Sed ut perspiciatis unde omnis iste natusror  sit voluptatem accusantium doloremque itae dicta sunt explicabo. Nemo enim ipsam voluptatem quia volaudantium, totam rem aperiam, eaque ipsa architecto beatae.</p>
-						<a href="mailto:info@thirdbranchconsulting.com" class={homepageStyles.button}>Get in Touch</a>
+						
+						<form class={homepageStyles.contactForm}>
+							<div class={homepageStyles.formRow}>
+								<div class={homepageStyles.formGroup}>
+									<label for="firstName">First Name *</label>
+									<input 
+										type="text" 
+										id="firstName" 
+										name="firstName" 
+										required 
+										class={homepageStyles.formInput}
+									/>
+								</div>
+								<div class={homepageStyles.formGroup}>
+									<label for="lastName">Last Name *</label>
+									<input 
+										type="text" 
+										id="lastName" 
+										name="lastName" 
+										required 
+										class={homepageStyles.formInput}
+									/>
+								</div>
+							</div>
+							
+							<div class={homepageStyles.formGroup}>
+								<label for="email">Email Address *</label>
+								<input 
+									type="email" 
+									id="email" 
+									name="email" 
+									required 
+									class={homepageStyles.formInput}
+								/>
+							</div>
+							
+							<div class={homepageStyles.formGroup}>
+								<label for="message">Message *</label>
+								<textarea 
+									id="message" 
+									name="message" 
+									rows="5" 
+									required 
+									class={homepageStyles.formTextarea}
+									placeholder="Tell us about your project..."
+								></textarea>
+							</div>
+							
+							<button type="submit" class={homepageStyles.button}>Send Message</button>
+						</form>
 					</div>
 				</div>
 			</div>
