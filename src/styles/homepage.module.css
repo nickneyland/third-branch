@@ -56,17 +56,21 @@ main {
         .row {
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            margin-bottom: 2rem;
-            width: 878px;
-            margin-bottom: 80px;
+            margin: 0 auto 80px auto;
+            max-width: 878px;
+            width: 100%;
+            gap: 80px;
             &:last-of-type {
                 margin-bottom: 140px;
             }
+            @media (max-width: 1200px) {
+                gap: 40px;
+            }
             @media (max-width: 930px) {
                 flex-direction: column;
-                width: 100%;
+                gap: 0;
                 padding: 0 40px;
             }
             @media (max-width: 600px) {
