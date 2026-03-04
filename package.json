@@ -12,6 +12,7 @@
     "@fontsource/epilogue": "^5.2.8",
     "@fontsource/poly": "^5.2.8",
     "aos": "^2.3.4",
-    "astro": "^5.17.1"
+    "astro": "^5.17.1",
+    "astro-seo": "^1.1.0"
   }
 }

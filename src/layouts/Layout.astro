@@ -3,8 +3,9 @@ import '../styles/global.module.css'
 import '@fontsource/epilogue'
 import '@fontsource/poly'
 import 'aos/dist/aos.css';
-import Header from "../components/Header.astro"
-import Footer from "../components/Footer.astro"
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SEO } from "astro-seo";
 ---
 
 <!doctype html>
@@ -15,7 +16,17 @@ import Footer from "../components/Footer.astro"
 		<link rel="icon" type="image/png" href="/favicon.ico" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Third Branch Consulting</title>
+		 <SEO
+			title="Third Branch | Strategy, Creative Consulting, and Development Services"
+			description="Third Branch offers strategy, creative consulting, and development services to help your brand grow."
+			openGraph={{
+				basic: {
+				title: "Third Branch | Strategy, Creative Consulting, and Development Services",
+				type: "website",
+				image: "https://thirdbranchconsulting.com/_astro/hero.D9LebxFL_DUag0.webp",
+				}
+			}}
+		/>
 	</head>
 	<body>
 		<Header />
