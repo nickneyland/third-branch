@@ -9,10 +9,12 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.0",
     "@fontsource/epilogue": "^5.2.8",
     "@fontsource/poly": "^5.2.8",
     "aos": "^2.3.4",
     "astro": "^5.17.1",
+    "astro-robots-txt": "^1.0.0",
     "astro-seo": "^1.1.0"
   }
 }
