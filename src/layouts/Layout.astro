@@ -16,10 +16,20 @@ import { SEO } from "astro-seo";
 		<link rel="icon" type="image/png" href="/favicon.ico" />
 		<link rel="icon" href="/favicon.ico" />
 		<link rel="sitemap" href="/sitemap-index.xml" />
+		<!-- Google tag (gtag.js) -->
+		<script is:inline type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-M13XLTYR75"></script>
+		<script is:inline type="text/partytown">
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-M13XLTYR75');
+		</script>
+
 		<meta name="generator" content={Astro.generator} />
 		 <SEO
 			title="Third Branch | Strategy, Consulting, and Development"
-			description="Third Branch offers incisive strategy, creative consulting, and full-stack development services to help your brand grow."
+			description="Third Branch offers marketing, incisive strategy, creative consulting, and full-stack development services to help your brand grow."
 			openGraph={{
 				basic: {
 				title: "Third Branch | Strategy, Creative Consulting, and Development Services",
