@@ -1,0 +1,33 @@
+# Netlify _redirects file
+# Format: from to [status]
+
+# Redirect third-branch.com to thirdbranchconsulting.com
+http://third-branch.com/* https://thirdbranchconsulting.com/:splat 301!
+https://third-branch.com/* https://thirdbranchconsulting.com/:splat 301!
+http://www.third-branch.com/* https://thirdbranchconsulting.com/:splat 301!
+https://www.third-branch.com/* https://thirdbranchconsulting.com/:splat 301!
+
+# Redirect thirdbranch.net to thirdbranchconsulting.com
+http://thirdbranch.net/* https://thirdbranchconsulting.com/:splat 301!
+https://thirdbranch.net/* https://thirdbranchconsulting.com/:splat 301!
+http://www.thirdbranch.net/* https://thirdbranchconsulting.com/:splat 301!
+https://www.thirdbranch.net/* https://thirdbranchconsulting.com/:splat 301!
+
+# Force HTTPS and www redirect for the main domain
+http://thirdbranchconsulting.com/* https://thirdbranchconsulting.com/:splat 301!
+https://www.thirdbranchconsulting.com/* https://thirdbranchconsulting.com/:splat 301!
+
+# SPA fallback - serve index.html for client-side routing (if needed)
+/* /index.html 200
+
+# Example redirects - customize these for your needs:
+# /old-page /new-page 301
+# /blog/* /articles/:splat 301
+# /contact /contact-us 301
+
+# API proxy example (if you have external APIs)
+# /api/* https://api.example.com/:splat 200
+
+# Block access to sensitive files
+/.env* / 404
+/config/* / 404

@@ -19,11 +19,11 @@ import { SEO } from "astro-seo";
 		<!-- Google tag (gtag.js) -->
 		<script is:inline type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-M13XLTYR75"></script>
 		<script is:inline type="text/partytown">
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
 
-		gtag('config', 'G-M13XLTYR75');
+			gtag('config', 'G-M13XLTYR75');
 		</script>
 
 		<meta name="generator" content={Astro.generator} />
@@ -36,6 +36,12 @@ import { SEO } from "astro-seo";
 				type: "website",
 				image: "https://thirdbranchconsulting.com/_astro/hero.D9LebxFL_DUag0.webp",
 				}
+			}}
+			twitter={{
+				card: "summary_large_image",
+				title: "Third Branch | Strategy, Consulting, and Development",
+				description: "Third Branch offers marketing, incisive strategy, creative consulting, and full-stack development services to help your brand grow.",
+				image: "https://thirdbranchconsulting.com/_astro/hero.D9LebxFL_DUag0.webp",
 			}}
 		/>
 	</head>
