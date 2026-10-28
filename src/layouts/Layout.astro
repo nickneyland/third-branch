@@ -6,6 +6,16 @@ import 'aos/dist/aos.css';
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SEO } from "astro-seo";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Third Branch | Strategy, Consulting, and Development",
+	description = "Third Branch offers marketing, incisive strategy, creative consulting, and full-stack development services to help your brand grow.",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -28,19 +38,19 @@ import { SEO } from "astro-seo";
 
 		<meta name="generator" content={Astro.generator} />
 		 <SEO
-			title="Third Branch | Strategy, Consulting, and Development"
-			description="Third Branch offers marketing, incisive strategy, creative consulting, and full-stack development services to help your brand grow."
+			title={title}
+			description={description}
 			openGraph={{
 				basic: {
-				title: "Third Branch | Strategy, Creative Consulting, and Development Services",
+				title,
 				type: "website",
 				image: "https://thirdbranchconsulting.com/_astro/hero.D9LebxFL_DUag0.webp",
 				}
 			}}
 			twitter={{
 				card: "summary_large_image",
-				title: "Third Branch | Strategy, Consulting, and Development",
-				description: "Third Branch offers marketing, incisive strategy, creative consulting, and full-stack development services to help your brand grow.",
+				title,
+				description,
 				image: "https://thirdbranchconsulting.com/_astro/hero.D9LebxFL_DUag0.webp",
 			}}
 		/>
@@ -54,5 +64,4 @@ import { SEO } from "astro-seo";
 		<script src="../js/contactForm.js"></script>
 	</body>
 </html>
-
 

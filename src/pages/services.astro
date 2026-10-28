@@ -1,0 +1,173 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../images/hero-services.jpg';
+import TopLeftImage from '../images/top left.png';
+import TopRightImage from '../images/top right.png';
+import BottomLeftImage from '../images/bottom left.png';
+import BottomRightImage from '../images/bottom right.png';
+import NikeLogo from '../images/pike.png';
+import GoogleLogo from '../images/GOOGLE.png';
+import HawaiiLogo from '../images/state of hawaii.png';
+import MongoDbLogo from '../images/MongoDB.png';
+import IrthLogo from '../images/Irth.png';
+import GreenwoodLogo from '../images/greenwood.png';
+import SouthernLogo from '../images/SOUTHERN.png';
+import NyserdaLogo from '../images/NYSERDA.png';
+import BahamasLogo from '../images/Bahamas.png';
+import styles from '../styles/services.module.css';
+
+const services = [
+	{
+		title: 'Branding & Strategy',
+		description: 'From content and social media to email campaigns and paid ads, we create strategies that get your brand in front of the right people and drive results.',
+	},
+	{
+		title: 'Marketing',
+		description: 'From content and social media to email campaigns and paid ads, we create strategies that get your brand in front of the right people and drive results.',
+	},
+	{
+		title: 'Web Development',
+		description: 'We build fast, responsive, and user-friendly websites, apps and experiential design that perform.',
+	},
+	{
+		title: 'Visual Design',
+		description: 'Our design services bring your brand to life with compelling visuals, from logos to brand extensions.',
+	},
+];
+
+const processSteps = [
+	{ name: 'Discover', description: 'We learn about your goals, audience and challenges.' },
+	{ name: 'Strategize', description: 'We create a tailored plan for your unique needs.' },
+	{ name: 'Create', description: 'We bring the plans to life with expert execution.' },
+	{ name: 'Grow', description: 'We measure results and optimize for continued success.' },
+];
+
+const clients = [
+	{ name: 'Nike', logo: NikeLogo },
+	{ name: 'Google', logo: GoogleLogo },
+	{ name: 'State of Hawaii', logo: HawaiiLogo },
+	{ name: 'MongoDB', logo: MongoDbLogo },
+	{ name: 'Irth', logo: IrthLogo },
+	{ name: 'Green-Wood', logo: GreenwoodLogo },
+	{ name: 'Southern Company', logo: SouthernLogo },
+	{ name: 'NYSERDA', logo: NyserdaLogo },
+	{ name: 'Bahamas Grid', logo: BahamasLogo },
+];
+---
+
+<Layout
+	title="Our Services | Third Branch"
+	description="Explore Third Branch's branding, strategy, marketing, web development, and visual design services."
+>
+	<main class={styles.servicesPage}>
+		<section class={styles.hero} aria-labelledby="services-title">
+			<Image src={Hero} alt="" class={styles.heroImage} />
+			<div class={styles.heroContent}>
+				<p class={styles.eyebrow}>Our Services</p>
+				<h1 id="services-title">Strategic marketing for all of your business needs</h1>
+				<p class={styles.heroDescription}>
+					We offer a full suite of marketing services to help you grow your brand, reach your audience and achieve your goals.
+					Whether you need a new website, a stronger brand or a full-scale marketing strategy, we’ve got you.
+				</p>
+			</div>
+		</section>
+
+		<section class={styles.serviceSection} aria-label="Our services">
+			<div class={styles.serviceGrid}>
+				<div class={styles.serviceCards}>
+					{services.map((service) => (
+						<article class={styles.serviceCard}>
+							<h2>{service.title}</h2>
+							<p>{service.description}</p>
+						</article>
+					))}
+				</div>
+				<div class={styles.serviceCollage} data-scroll-collage aria-hidden="true">
+					<div class:list={[styles.collagePiece, styles.ringBeige]} data-collage-piece data-direction-x="-1" data-direction-y="-1"><Image src={TopLeftImage} alt="" class={styles.collageImage} /></div>
+					<div class:list={[styles.collagePiece]} data-collage-piece data-direction-x="1" data-direction-y="-1"><Image src={TopRightImage} alt="" class={styles.collageImage} /></div>
+					<div class:list={[styles.collagePiece]} data-collage-piece data-direction-x="-1" data-direction-y="1"><Image src={BottomLeftImage} alt="" class={styles.collageImage} /></div>
+					<div class:list={[styles.collagePiece, styles.ringPurple]} data-collage-piece data-direction-x="1" data-direction-y="1"><Image src={BottomRightImage} alt="" class={styles.collageImage} /></div>
+				</div>
+			</div>
+		</section>
+
+		<section class={styles.process} aria-labelledby="process-title">
+			<div class={styles.processInner}>
+				<p class={styles.sectionEyebrow}>Our Process</p>
+				<h2 id="process-title">How We Work</h2>
+				<p class={styles.processIntro}>
+					We keep things simple, collaborative and focused on results.<br />
+					Here’s how we bring your vision to life.
+				</p>
+				<ol class={styles.processSteps}>
+					{processSteps.map((step, index) => (
+						<li>
+							<span class={styles.stepNumber}>{index + 1}</span>
+							<h3>{step.name}</h3>
+							<p>{step.description}</p>
+						</li>
+					))}
+				</ol>
+			</div>
+		</section>
+
+		<section class={styles.clientsSection} aria-labelledby="clients-title">
+			<div class={styles.clientsCard}>
+				<p class={styles.clientsEyebrow}>Clients</p>
+				<h2 id="clients-title">Notable Clients Include</h2>
+				<ul class={styles.clientList}>
+					{clients.map((client) => (
+						<li>
+							<Image src={client.logo} alt={client.name} />
+						</li>
+					))}
+				</ul>
+			</div>
+		</section>
+
+		<section class={styles.callToAction} aria-labelledby="cta-title">
+			<p class={styles.sectionEyebrow}>Let’s work together</p>
+			<h2 id="cta-title">Need a custom solution?</h2>
+			<p>We love a good challenge. If you’re not sure where to start, let’s chat about your goals and build a plan together.</p>
+			<a href="/#contact-us">Get in Touch</a>
+		</section>
+	</main>
+</Layout>
+
+<script>
+	const collage = document.querySelector<HTMLElement>('[data-scroll-collage]');
+	const pieces = collage?.querySelectorAll<HTMLElement>('[data-collage-piece]');
+	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+	if (collage && pieces && !reducedMotion.matches) {
+		let frame = 0;
+
+		const updateCollage = () => {
+			frame = 0;
+			const bounds = collage.getBoundingClientRect();
+			const collageCenter = bounds.top + bounds.height / 2;
+			const distanceFromViewportCenter = (collageCenter - window.innerHeight / 2) / window.innerHeight;
+			const approachLead = 0.4;
+			const entryDistance = 0.5 + bounds.height / (2 * window.innerHeight) + approachLead;
+			const maxSeparation = window.innerWidth <= 560 ? 48 : 140;
+			const separation = Math.round(Math.min(Math.max(distanceFromViewportCenter, 0) / entryDistance, 1) * maxSeparation * 2) / 2;
+
+			pieces.forEach((piece) => {
+				const directionX = Number(piece.dataset.directionX);
+				const directionY = Number(piece.dataset.directionY);
+				piece.style.setProperty('--shift-x', `${directionX * separation}px`);
+				piece.style.setProperty('--shift-y', `${directionY * separation}px`);
+			});
+			collage.toggleAttribute('data-assembled', separation === 0);
+		};
+
+		const requestUpdate = () => {
+			if (!frame) frame = requestAnimationFrame(updateCollage);
+		};
+
+		window.addEventListener('scroll', requestUpdate, { passive: true });
+		window.addEventListener('resize', requestUpdate);
+		requestUpdate();
+	}
+</script>
