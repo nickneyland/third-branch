@@ -5,13 +5,32 @@ import Logo from "../images/logo.svg"
 import styles from '../styles/header.module.css'
 ---
 
-<header class={styles.header}>
+<header class={styles.header} data-site-header>
     <div class={styles.innerHeader}>
         <div class={styles.headerLeft}>
             <a href="/"><Image src={Logo} alt="Third Branch Consulting Logo" class="logo" /></a>
         </div>
-        <div class={styles.headerRight}>
+        <button type="button" class={styles.menuButton} aria-label="Toggle menu" aria-expanded="false" aria-controls="site-menu" data-menu-button>
+            <span></span><span></span><span></span>
+        </button>
+        <div class={styles.headerRight} id="site-menu">
             <Navigation />
         </div>
     </div>
 </header>   
+
+<script>
+    const header = document.querySelector<HTMLElement>('[data-site-header]');
+    const button = header?.querySelector<HTMLButtonElement>('[data-menu-button]');
+
+    const setOpen = (open: boolean) => {
+        header?.toggleAttribute('data-open', open);
+        button?.setAttribute('aria-expanded', String(open));
+    };
+
+    button?.addEventListener('click', () => setOpen(!header?.hasAttribute('data-open')));
+    header?.querySelectorAll('nav a').forEach((link) => link.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') setOpen(false);
+    });
+</script>

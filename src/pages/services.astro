@@ -20,7 +20,7 @@ import styles from '../styles/services.module.css';
 const services = [
 	{
 		title: 'Branding & Strategy',
-		description: 'From content and social media to email campaigns and paid ads, we create strategies that get your brand in front of the right people and drive results.',
+		description: 'We partner with you every step of the way to help strategically build out your brand goals and make sure your vision is being showcased authentically.',
 	},
 	{
 		title: 'Marketing',
@@ -28,7 +28,7 @@ const services = [
 	},
 	{
 		title: 'Web Development',
-		description: 'We build fast, responsive, and user-friendly websites, apps and experiential design that perform.',
+		description: 'We make fast, responsive, and user-friendly websites and apps with experiential design that is built to perform.',
 	},
 	{
 		title: 'Visual Design',
@@ -62,10 +62,10 @@ const clients = [
 >
 	<main class={styles.servicesPage}>
 		<section class={styles.hero} aria-labelledby="services-title">
-			<Image src={Hero} alt="" class={styles.heroImage} />
+			<Image src={Hero} alt="" class={styles.heroImage} data-hero-parallax loading="eager" fetchpriority="high" />
 			<div class={styles.heroContent}>
 				<p class={styles.eyebrow}>Our Services</p>
-				<h1 id="services-title">Strategic marketing for all of your business needs</h1>
+				<h1 id="services-title">Strategic marketing for all your business needs</h1>
 				<p class={styles.heroDescription}>
 					We offer a full suite of marketing services to help you grow your brand, reach your audience and achieve your goals.
 					Whether you need a new website, a stronger brand or a full-scale marketing strategy, we’ve got you.
@@ -102,7 +102,7 @@ const clients = [
 				</p>
 				<ol class={styles.processSteps}>
 					{processSteps.map((step, index) => (
-						<li>
+						<li data-aos="fade-up">
 							<span class={styles.stepNumber}>{index + 1}</span>
 							<h3>{step.name}</h3>
 							<p>{step.description}</p>
@@ -118,7 +118,7 @@ const clients = [
 				<h2 id="clients-title">Notable Clients Include</h2>
 				<ul class={styles.clientList}>
 					{clients.map((client) => (
-						<li>
+						<li data-aos="fade-down">
 							<Image src={client.logo} alt={client.name} />
 						</li>
 					))}
@@ -130,7 +130,7 @@ const clients = [
 			<p class={styles.sectionEyebrow}>Let’s work together</p>
 			<h2 id="cta-title">Need a custom solution?</h2>
 			<p>We love a good challenge. If you’re not sure where to start, let’s chat about your goals and build a plan together.</p>
-			<a href="/#contact-us">Get in Touch</a>
+			<a href="/contact">Get in Touch</a>
 		</section>
 	</main>
 </Layout>
@@ -151,13 +151,16 @@ const clients = [
 			const approachLead = 0.4;
 			const entryDistance = 0.5 + bounds.height / (2 * window.innerHeight) + approachLead;
 			const maxSeparation = window.innerWidth <= 560 ? 48 : 140;
-			const separation = Math.round(Math.min(Math.max(distanceFromViewportCenter, 0) / entryDistance, 1) * maxSeparation * 2) / 2;
+			const progress = Math.min(Math.max(distanceFromViewportCenter, 0) / entryDistance, 1);
+			const separation = Math.round(progress * maxSeparation * 2) / 2;
+			const opacity = (1 - progress).toFixed(3);
 
 			pieces.forEach((piece) => {
 				const directionX = Number(piece.dataset.directionX);
 				const directionY = Number(piece.dataset.directionY);
 				piece.style.setProperty('--shift-x', `${directionX * separation}px`);
 				piece.style.setProperty('--shift-y', `${directionY * separation}px`);
+				piece.style.setProperty('--piece-opacity', opacity);
 			});
 			collage.toggleAttribute('data-assembled', separation === 0);
 		};

@@ -10,12 +10,24 @@ import { SEO } from "astro-seo";
 interface Props {
 	title?: string;
 	description?: string;
+	noindex?: boolean;
 }
 
 const {
 	title = "Third Branch | Strategy, Consulting, and Development",
 	description = "Third Branch offers marketing, incisive strategy, creative consulting, and full-stack development services to help your brand grow.",
+	noindex = false,
 } = Astro.props;
+
+const organizationSchema = {
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	name: "Third Branch",
+	url: "https://thirdbranchconsulting.com",
+	logo: "https://thirdbranchconsulting.com/favicon.ico",
+	email: "info@thirdbranchconsulting.com",
+	sameAs: ["https://www.linkedin.com/company/third-branch/"],
+};
 ---
 
 <!doctype html>
@@ -37,15 +49,25 @@ const {
 		</script>
 
 		<meta name="generator" content={Astro.generator} />
+		<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
 		 <SEO
 			title={title}
 			description={description}
+			noindex={noindex}
+			nofollow={noindex}
 			openGraph={{
 				basic: {
 				title,
 				type: "website",
 				image: "https://thirdbranchconsulting.com/_astro/hero.D9LebxFL_DUag0.webp",
-				}
+				},
+				optional: {
+					description,
+					siteName: "Third Branch",
+				},
+				image: {
+					alt: "Third Branch",
+				},
 			}}
 			twitter={{
 				card: "summary_large_image",
@@ -65,3 +87,92 @@ const {
 	</body>
 </html>
 
+<script>
+	const heroImages = document.querySelectorAll<HTMLElement>('[data-hero-parallax]');
+	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+	if (heroImages.length && !reducedMotion.matches) {
+		let frame = 0;
+
+		const update = () => {
+			frame = 0;
+			heroImages.forEach((image) => {
+				const hero = image.parentElement;
+				if (!hero) return;
+				const height = hero.offsetHeight;
+				const progress = Math.min(Math.max(window.scrollY / height, 0), 1);
+				image.style.setProperty('--parallax-y', `${(-progress * height * 0.10).toFixed(1)}px`);
+			});
+		};
+
+		const requestUpdate = () => {
+			if (!frame) frame = requestAnimationFrame(update);
+		};
+
+		window.addEventListener('scroll', requestUpdate, { passive: true });
+		window.addEventListener('resize', requestUpdate);
+		update();
+	}
+</script>
+
+<style is:global>
+	[data-hero-parallax] {
+		transform: translate3d(0, var(--parallax-y, 0px), 0) scale(1.2);
+		will-change: transform;
+	}
+
+	@view-transition {
+		navigation: auto;
+	}
+
+	[data-site-header] {
+		view-transition-name: site-header;
+	}
+
+	[data-site-header] .logo {
+		view-transition-name: site-logo;
+	}
+
+	::view-transition-group(site-logo) {
+		z-index: 1;
+	}
+
+	::view-transition-group(root) {
+		background: var(--orange);
+		animation-duration: 800ms;
+	}
+
+	::view-transition-old(root) {
+		animation: 800ms cubic-bezier(0.76, 0, 0.24, 1) both page-out;
+		transform-origin: 100% 50%;
+	}
+
+	::view-transition-new(root) {
+		animation: 800ms cubic-bezier(0.76, 0, 0.24, 1) both page-in;
+	}
+
+	@keyframes page-out {
+		to {
+			transform: translateX(8%) scale(0.92);
+			filter: brightness(0.5);
+			border-radius: 24px;
+		}
+	}
+
+	@keyframes page-in {
+		from {
+			clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+		}
+		to {
+			clip-path: polygon(0 0, 120% 0, 120% 100%, 0 100%);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		::view-transition-group(*),
+		::view-transition-old(*),
+		::view-transition-new(*) {
+			animation: none;
+		}
+	}
+</style>

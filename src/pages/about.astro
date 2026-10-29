@@ -1,0 +1,80 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../images/hero-about.jpg';
+import StrategyPhoto from '../images/ross.jpg';
+import TechPhoto from '../images/nick.jpg';
+import DesignPhoto from '../images/veronica.jpg';
+import styles from '../styles/about.module.css';
+
+const team = [
+	{ name: 'Ross White', role: 'Partner • Strategy', photo: StrategyPhoto },
+	{ name: 'Nick Neyland', role: 'Partner • Tech', photo: TechPhoto },
+	{ name: 'Veronica Pisano', role: 'Partner • Design', photo: DesignPhoto },
+];
+
+const values = [
+	{ title: 'Strategic Thinking', description: 'We turn big ideas into clear paths with measurable results.', color: 'orange' },
+	{ title: 'Creative Solutions', description: 'We bring fresh ideas and bold creative to every project.', color: 'green' },
+	{ title: 'Long-Term Partnerships', description: 'We’re more than a vendor. We’re a true extension of your team.', color: 'blue' },
+];
+---
+
+<Layout noindex title="About | Third Branch" description="Meet the Third Branch team: a small, full-service marketing agency with a big vision.">
+	<main class={styles.aboutPage}>
+		<section class={styles.hero}>
+			<Image src={Hero} alt="" class={styles.heroImage} data-hero-parallax loading="eager" fetchpriority="high" />
+			<div class={styles.heroContent}>
+				<p class={styles.heroStatement}>We’re Third Branch, a creative company that lorem ipsum something punchy here.</p>
+				<div class={styles.heroDetails}>
+					<p class={styles.eyebrow}>About Us</p>
+					<h1>Small Team, Big Vision</h1>
+					<p>We’re a full-service marketing agency helping brands grow through strategy, creative thinking and data-driven execution. We’re passionate about what we do, and even more passionate about the people we do it for.</p>
+					<a href="#team" class={styles.arrow} aria-label="Scroll to team">↓</a>
+				</div>
+			</div>
+		</section>
+
+		<section class={styles.team} id="team" aria-labelledby="team-title">
+			<h2 id="team-title">Meet Our Team</h2>
+			<p class={styles.teamIntro}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+			<ul class={styles.teamGrid}>
+				{team.map((member) => (
+					<li data-aos="fade-up">
+						<Image src={member.photo} alt={`Photo of ${member.name}`} class={styles.teamPhoto} />
+						<h3>{member.name}</h3>
+						<p>{member.role}</p>
+					</li>
+				))}
+			</ul>
+		</section>
+
+		<section class={styles.mission} aria-labelledby="mission-title">
+			<div class={styles.missionInner}>
+				<div class={styles.missionCopy}>
+					<p class={styles.sectionEyebrow}>Our Mission</p>
+					<h2 id="mission-title">We strive to build brands that make an impact.</h2>
+					<hr />
+					<p>Our mission is to help purpose-driven businesses connect with their audience, tell their story and achieve sustainable growth through creative, strategic, and results-focused marketing.</p>
+				</div>
+				<ul class={styles.values}>
+					{values.map((value) => (
+						<li>
+							<span class={`${styles.asterisk} ${styles[value.color]}`} aria-hidden="true">✱</span>
+							<div>
+								<h3>{value.title}</h3>
+								<p>{value.description}</p>
+							</div>
+						</li>
+					))}
+				</ul>
+			</div>
+		</section>
+
+		<section class={styles.callToAction} aria-labelledby="cta-title">
+			<h2 id="cta-title">Need a custom solution?</h2>
+			<p>We love a good challenge. If you’re not sure where to start, let’s chat about your goals and build a plan together.</p>
+			<a href="/contact">Get in Touch</a>
+		</section>
+	</main>
+</Layout>

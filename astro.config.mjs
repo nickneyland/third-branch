@@ -7,5 +7,5 @@ import partytown from '@astrojs/partytown';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://thirdbranchconsulting.com',
-  integrations: [sitemap(), robotsTxt(), partytown()]
+  integrations: [sitemap({ filter: (page) => !page.includes('/about') }), robotsTxt(), partytown()]
 });

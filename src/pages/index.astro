@@ -15,13 +15,13 @@ import globalStyles from '../styles/global.module.css'
 <Layout>
 	<section>
 		<div class={heroStyles.heroHolder}>
-			<Image src={Hero} alt="Hero Image" class={heroStyles.hero} />
+			<Image src={Hero} alt="Hero Image" class={heroStyles.hero} data-hero-parallax loading="eager" fetchpriority="high" />
 			<div class={heroStyles.heroText}>
 				<h1>Third Branch offers <a href="#strategy"><span class={heroStyles.lineOrange}>strategy</span></a>, <a href="#creative-consulting"><span class={heroStyles.lineGreen}>creative consulting</span></a> and <a href="#development"><span class={heroStyles.lineBlue}>development</span></a> services.</h1>
 			</div>
 		</div>
 		<div class={homepageStyles.pageBanner}>
-			<Image src={BannerOne} alt="Banner Image" />
+			<Image src={BannerOne} alt="" role="presentation" />
 		</div>
 	</section>
 
@@ -32,25 +32,25 @@ import globalStyles from '../styles/global.module.css'
 				<div class={homepageStyles.row} id="strategy">
 					<div class={`${homepageStyles.col} ${homepageStyles.imageCol}`} data-aos="fade-right">
 						<div class={homepageStyles.imageHolder}>
-							<Image src={ServicesOne} alt="Design Services" />
+							<Image src={ServicesOne} alt="Strategy services" />
 							<div class={homepageStyles.textHolder}>
 								<h3>Strategy</h3>
 							</div>
 						</div>
 					</div>
 					<div class={`${homepageStyles.col} ${homepageStyles.textCol}`} data-aos="fade-left">
-						<h4>Strategy and marketing solutions to power up your brand.</h4>
+						<h4 class={`${homepageStyles.headOne}`}>Strategy and marketing solutions to power up your brand.</h4>
 						<p>A strong marketing strategy sharply defines your target audience, clarifies competitive advantage, and aligns messaging and channels to measurable business goals. We tailor your campaigns, visuals, and voice to you - maximizing your brand potential.</p>
 					</div>
 				</div>
 				<div class={homepageStyles.row} id="creative-consulting">
 					<div class={`${homepageStyles.col} ${homepageStyles.textCol} ${homepageStyles.textColTwo}`} data-aos="fade-right">
-						<h4>Design for all of your needs. Brand building for a wider reach.</h4>
+						<h4 class={`${homepageStyles.headTwo}`}>Design for all of your needs. Brand building for a wider reach.</h4>
 						<p>We create bold, strategic design and branding solutions for any industry — combining market research with bold visuals to help your brand stand out. Partnering directly with you, we add a personal touch and fast, friendly collaboration that actually gets results.</p>
 					</div>
 					<div class={`${homepageStyles.col} ${homepageStyles.imageCol}`} data-aos="fade-left">
 						<div class={homepageStyles.imageHolder}>
-							<Image src={ServicesTwo} alt="Design Services" />
+							<Image src={ServicesTwo} alt="Creative consulting services" />
 							<div class={homepageStyles.textHolder}>
 								<h3>Design</h3>
 							</div>
@@ -60,20 +60,20 @@ import globalStyles from '../styles/global.module.css'
 				<div class={homepageStyles.row} id="development">
 					<div class={`${homepageStyles.col} ${homepageStyles.imageCol}`} data-aos="fade-right">
 						<div class={homepageStyles.imageHolder}>
-							<Image src={ServicesThree} alt="Design Services" />
+							<Image src={ServicesThree} alt="Development services" />
 							<div class={homepageStyles.textHolder}>
 								<h3>Tech</h3>
 							</div>
 						</div>
 					</div>
 					<div class={`${homepageStyles.col} ${homepageStyles.textCol}`} data-aos="fade-left">
-						<h4>Full-stack development services make your brand market ready.</h4>
+						<h4 class={`${homepageStyles.headThree}`}>Full-stack development services make your brand market ready.</h4>
 						<p>We build end-to-end technology solutions, from live conference software to custom apps to front and back end website builds. Our team guarantees scalable and secure architecture plus a seamless user experience for all your digital marketing needs.</p>
 					</div>
 				</div>
 			</div>
 			<div class={homepageStyles.pageBanner}>
-					<Image src={BannerTwo} alt="Banner Image" />
+					<Image src={BannerTwo} alt="" role="presentation" />
 				</div>
 		</section>
 
@@ -81,63 +81,9 @@ import globalStyles from '../styles/global.module.css'
 			<div>
 				<div class={homepageStyles.contactUs}>
 					<div class={`${homepageStyles.innerContact} ${globalStyles.innerContainer}`} data-aos="fade-up">
-						<h4>Contact Us</h4>
-						<p>Are you interested in starting a project? We'd love to hear from you! If you have any design, marketing, strategy, or technology needs, please reach out. We love helping clients achieve their potential.</p>
-						
-						<form class={homepageStyles.contactForm} 
-						data-netlify="true" 
-    					name="contact"
-						method="post"
-						>
-						 <input type="hidden" name="form-name" value="contact" />
-							<div class={homepageStyles.formRow}>
-								<div class={homepageStyles.formGroup}>
-									<label for="firstName">First Name *</label>
-									<input 
-										type="text" 
-										id="firstName" 
-										name="firstName" 
-										required 
-										class={homepageStyles.formInput}
-									/>
-								</div>
-								<div class={homepageStyles.formGroup}>
-									<label for="lastName">Last Name *</label>
-									<input 
-										type="text" 
-										id="lastName" 
-										name="lastName" 
-										required 
-										class={homepageStyles.formInput}
-									/>
-								</div>
-							</div>
-							
-							<div class={homepageStyles.formGroup}>
-								<label for="email">Email Address *</label>
-								<input 
-									type="email" 
-									id="email" 
-									name="email" 
-									required 
-									class={homepageStyles.formInput}
-								/>
-							</div>
-							
-							<div class={homepageStyles.formGroup}>
-								<label for="message">Message *</label>
-								<textarea 
-									id="message" 
-									name="message" 
-									rows="5" 
-									required 
-									class={homepageStyles.formTextarea}
-									placeholder="Tell us about your project..."
-								></textarea>
-							</div>
-							
-							<button type="submit" class={homepageStyles.button}>Send Message</button>
-						</form>
+						<h4>Interested in starting a project?</h4>
+						<p>We'd love to hear from you! If you have any design, marketing, strategy, or technology needs, please reach out. We love helping clients achieve their potential.</p>
+						<a href="/contact" class={homepageStyles.button}>Get in Touch</a>
 					</div>
 				</div>
 			</div>

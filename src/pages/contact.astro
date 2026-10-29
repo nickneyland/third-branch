@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+import styles from '../styles/contact.module.css';
+---
+
+<Layout title="Contact | Third Branch" description="Start a project with Third Branch. Reach out about design, marketing, strategy or technology needs.">
+	<main class={styles.contactPage}>
+		<span class={`${styles.slash} ${styles.slashOne}`} aria-hidden="true"></span>
+		<span class={`${styles.slash} ${styles.slashTwo}`} aria-hidden="true"></span>
+		<div class={styles.inner}>
+			<h1>Contact Us</h1>
+			<p class={styles.intro}>Are you interested in starting a project? We’d love to hear from you! If you have any design, marketing, strategy, or technology needs, please reach out. We love helping clients achieve their potential.</p>
+
+			<form class={styles.form} name="contact-page" method="post" action="/contact" data-netlify="true" data-contact-form novalidate>
+				<input type="hidden" name="form-name" value="contact-page" />
+				<div class={styles.row}>
+					<div class={styles.group}>
+						<label for="firstName">First Name *</label>
+						<input type="text" id="firstName" name="firstName" autocomplete="given-name" required aria-describedby="firstName-error" />
+						<p class={styles.error} id="firstName-error" data-error-for="firstName" hidden></p>
+					</div>
+					<div class={styles.group}>
+						<label for="lastName">Last Name *</label>
+						<input type="text" id="lastName" name="lastName" autocomplete="family-name" required aria-describedby="lastName-error" />
+						<p class={styles.error} id="lastName-error" data-error-for="lastName" hidden></p>
+					</div>
+				</div>
+				<div class={styles.group}>
+					<label for="email">Email Address *</label>
+					<input type="email" id="email" name="email" autocomplete="email" required aria-describedby="email-error" />
+					<p class={styles.error} id="email-error" data-error-for="email" hidden></p>
+				</div>
+				<div class={styles.group}>
+					<label for="message">Message *</label>
+					<textarea id="message" name="message" rows="5" required placeholder="Tell us about your project..." aria-describedby="message-error"></textarea>
+					<p class={styles.error} id="message-error" data-error-for="message" hidden></p>
+				</div>
+				<p class={styles.status} data-form-status role="status" hidden></p>
+				<button type="submit">Send Message</button>
+			</form>
+		</div>
+	</main>
+</Layout>
+
+<script>
+	const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+	const status = form?.querySelector<HTMLElement>('[data-form-status]');
+	const labels: Record<string, string> = {
+		firstName: 'your first name',
+		lastName: 'your last name',
+		email: 'your email address',
+		message: 'a message',
+	};
+
+	const setError = (field: HTMLInputElement | HTMLTextAreaElement, message: string) => {
+		const error = form?.querySelector<HTMLElement>(`[data-error-for="${field.name}"]`);
+		if (!error) return;
+		error.textContent = message;
+		error.hidden = !message;
+		if (message) field.setAttribute('aria-invalid', 'true');
+		else field.removeAttribute('aria-invalid');
+	};
+
+	const validateField = (field: HTMLInputElement | HTMLTextAreaElement) => {
+		const value = field.value.trim();
+		let message = '';
+		if (!value) message = `Please enter ${labels[field.name]}.`;
+		else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) message = 'Please enter a valid email address.';
+		setError(field, message);
+		return !message;
+	};
+
+	if (form && status) {
+		const fields = Array.from(form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input[required], textarea[required]'));
+
+		fields.forEach((field) => {
+			field.addEventListener('blur', () => validateField(field));
+			field.addEventListener('input', () => {
+				if (field.hasAttribute('aria-invalid')) validateField(field);
+			});
+		});
+
+		form.addEventListener('submit', async (event) => {
+			event.preventDefault();
+			status.hidden = true;
+			status.removeAttribute('data-state');
+
+			const results = fields.map(validateField);
+			if (results.includes(false)) {
+				fields[results.indexOf(false)].focus();
+				return;
+			}
+
+			const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+			if (button) button.disabled = true;
+
+			try {
+				const response = await fetch(form.getAttribute('action') || '/contact', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+					body: new URLSearchParams(new FormData(form) as unknown as Record<string, string>).toString(),
+				});
+				if (!response.ok) throw new Error(`Form submission failed (${response.status})`);
+				form.reset();
+				status.dataset.state = 'success';
+				status.textContent = 'Thank you! Your message has been sent. We’ll be in touch soon.';
+			} catch (error) {
+				console.error(error);
+				status.dataset.state = 'error';
+				status.textContent = 'Sorry, something went wrong sending your message. Please try again.';
+			} finally {
+				status.hidden = false;
+				if (button) button.disabled = false;
+			}
+		});
+	}
+</script>

@@ -141,7 +141,8 @@
   --ring-size: 36px;
   position: relative;
   transform: translate3d(var(--shift-x, 0), var(--shift-y, 0), 0);
-  will-change: transform;
+  opacity: var(--piece-opacity, 1);
+  will-change: transform, opacity;
 }
 
 .collageImage {
@@ -488,6 +489,7 @@
 @media (prefers-reduced-motion: reduce) {
   .collagePiece {
     transform: none;
+    opacity: 1;
     will-change: auto;
   }
 
